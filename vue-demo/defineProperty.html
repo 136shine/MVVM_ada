@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title></title>
+    <script>
+        // Object.defineProperty
+        // 作用定义：直接在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象。
+        // Object.defineProperty(obj, prop, descriptor)
+        // 参数 obj => 要在其上定义属性的对象;
+        //     prop => 要定义或修改的属性的名称;
+        //     descriptor => 将被定义或修改的属性描述符。
+        // 返回值 被传递给函数的对象obj。
+        // 示例：
+        var obj = {};
+        Object.defineProperty(obj, 'hello', {
+            get: function() {
+                console.log('get val:'+ val);
+                return val;
+         　 },
+        　　set: function(newVal) {
+                val = newVal;
+                console.log('set val:'+ val);
+            }
+        });
+        // obj.hello;  // 触发 getter =>get val:undefined 
+        obj.hello='111'; // 触发 setter =>set val:111
+        obj.hello;  // 触发 getter =>get val:111
+    </script>
+</head>
+<body>
+         
+</body>
+</html> 

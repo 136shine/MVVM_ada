@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MVVM</title>
+</head>
+<body>
+
+<div id="mvvm-app">
+    <span>{{className}}</span>
+    <input type="text" v-model="someStr">
+    <span>{{someStr}}</span>
+    <input type="text" v-model="child.someStr">
+    <span>{{child.someStr}}</span>
+    <!-- <p v-class="className" class="abc">
+        {{someStr}}
+        <span v-text="child.someStr"></span>
+    </p> -->
+    <!-- <p>{{getHelloWord}}</p> -->
+    <!-- <p v-html="child.htmlStr"></p>
+    <button v-on:click="clickBtn">change model</button> -->
+</div>
+
+<!-- <script src="http://cdn.bootcss.com/vue/1.0.25/vue.js"></script> -->
+<script src="./js/observer.js"></script>
+<script src="./js/watcher.js"></script>
+<script src="./js/compile.js"></script>
+<script src="./js/mvvm.js"></script>
+
+<script>
+    // get-depend  //在你用到这个变量的时候会把当前的watcher，也就是渲染视图的函数收集起来。
+    // set-notify // 在你改变变量的时候会更新你那个时候收集的watchers
+    var vm = new MVVM({
+        el: '#mvvm-app',
+        data: {
+            someStr: 'hello ',
+            className: 'btn',
+            htmlStr: '<span style="color: #f00;">red</span>',
+            child: {
+                someStr: 'World !'
+            }
+        },
+
+        // computed: {
+        //     getHelloWord: function() {
+        //         return this.someStr + this.child.someStr;
+        //     }
+        // },
+
+        // methods: {
+            // clickBtn: function(e) {
+            //     var randomStrArr = ['childOne', 'childTwo', 'childThree'];
+            //     this.child.someStr = randomStrArr[parseInt(Math.random() * 3)];
+            // }
+        // }
+    });
+    console.log(vm)
+
+    vm.$watch('child.someStr', function(val, oldVal) {
+        console.log('arguments=>>>',arguments);
+        // console.log(val, oldVal);
+    });
+</script>
+
+</body>
+</html>

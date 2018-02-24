@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title></title>
+     <script>
+        var obj = {};
+        Object.defineProperty(obj, 'hello', {
+            get: function() {
+                console.log('get val:'+ val);
+                return val;
+         　 },
+        　　set: function(newVal) {
+                val = newVal;
+                console.log('set val:'+ val);
+            }
+        });
+        obj.hello='111';
+        obj.hello;
+     </script>
+ </head>
+ <body>
+     
+ </body>
+ </html> 
